@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tiny Organics</title>
+</head>
+
+<body>
+    <h1>Welcome to Tiny Organics</h1>
+    <div class="register">
+        <h2>Register</h2>
+        {% if messages %}
+        <ul>
+            {% for message in messages %}
+            <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        <form action="/register" method="POST">
+            {% csrf_token %}
+            <label for="first_name">First Name</label>
+            <input type="text" name="first_name">
+            <label for="last_name">Last Name</label>
+            <input type="text" name="last_name">
+            <label for="email">Email</label>
+            <input type="text" name="email">
+            <label for="password">Password</label>
+            <input type="password" name="password">
+            <label for="confirm">Confirm PW</label>
+            <input type="password" name="confirm_password">
+            <input type="submit" value="Register">
+        </form>
+    </div>
+    <div class="login">
+        <h2>Login</h2>
+        <form action="/login" method="POST">
+            {% csrf_token %}
+            <label for="email">Email</label>
+            <input type="text" name="email">
+            <label for="password">Password</label>
+            <input type="password" name="password">
+            <input type="submit" value="Login">
+        </form>
+    </div>
+
+
+</body>

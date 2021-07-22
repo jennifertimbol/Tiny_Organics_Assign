@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tiny Organics Home</title>
+</head>
+<body>
+    <div class="container">
+    <h2>Hi, {{curr_user.first_name}}!</h2>
+
+    <form action="/fetchrecipes" method="POST">
+        <h4>Enter your child's information and search for recipes:</h4>
+        {% csrf_token %}
+        {{childForm.as_p}}
+        <input type="submit" value="Find Recipes">
+    </form>
+    </div>
+</body>
+</html>
