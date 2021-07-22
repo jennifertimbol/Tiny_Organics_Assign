@@ -21,7 +21,7 @@ class CustomerManager(models.Manager):
             errors["duplicate"] = "Email input is already in use"
         if len(postData['password']) < 8:
             errors['password'] = "Password must be at least 8 characters"
-        if postData['password'] != postData['confirm_password']:
+        if postData['password'] != postData['confirm_pass']:
             errors['pw_match'] = "Password must match!"
         
         return errors
@@ -38,5 +38,7 @@ class Child(models.Model):
     first_name = models.CharField(max_length=55)
     last_name = models.CharField(max_length=55)
     allergies = models.TextField()
+    # allergies switch to ChoiceField
+    #Fetch choices from API call
     parent = models.ForeignKey(Customer, on_delete=models.CASCADE)
     created_at = models.DateField(auto_now_add=True)

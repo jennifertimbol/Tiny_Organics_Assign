@@ -9,7 +9,9 @@
     <h2></h2>
     <h2>{{user.first_name}}, here are the recipes we found for {{child.first_name}}:</h2>
 
-    <p>{for i in recipes %}</p>
+    {% for i in recipes %}
+    <p>{{i.name}}</p> 
+    {% endfor %}
     
 </body>
 </html>
