@@ -22,19 +22,40 @@
             </div>
         </div>
         <hr>
-        {% load crispy_forms_tags %}
+        <!-- {% load crispy_forms_tags %}
         <form class ="child_info bg-light p-4" action="/fetchrecipes" method="POST">
             <h4>Enter your child's information and search for recipes:</h4>
             {% csrf_token %}
             {{childForm|crispy}}
             <input class="btn btn-primary" type="submit" value="Find Recipes">
-        </form>
+        </form> -->
 
-        {% for allergens in allergen_types %}
-        <ul>
-            <li>{{allergens.name}}</li>
-        </ul>
-        {% endfor %}
+        <div class="row row-content bg-light p-4">
+            <div class="col col-sm-10">
+                <form action="/fetchrecipes" method="POST">
+                    <h4>Enter your child's information and search for recipes:</h4>
+                    <div class="form-group row">
+                        <label for="first_name" class="col col-form-label col-sm-6">First name:</label>
+                        <input type="text" class="form-control">
+                    </div>
+                    <div class="form-group row">
+                        <label for="last_name" class="col col-form-label col-sm-6">Last name:</label>
+                        <input type="text" class="form-control">
+                    </div>
+                    <div class="form-group row">
+                        <label for="allergies">Select an allergen:</label>
+                        <select class="form-control" id="allergies">
+                            {% for allergens in allergen_types %}
+                          <option>{{allergens.name}}</option>
+                          {% endfor %}
+                        </select>
+                      </div>
+                    <div class="form-group row">
+                    <button type="submit" class="btn btn-primary">Find Recipes</button>
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
