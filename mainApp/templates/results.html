@@ -1,17 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <title>Recipes for you</title>
 </head>
-<body>
-    <h2></h2>
-    <h2>{{user.first_name}}, here are the recipes we found for {{child.first_name}}:</h2>
 
-    {% for i in recipes %}
-    <p>{{i.name}}</p> 
-    {% endfor %}
-    
+<body>
+    <div class="container">
+        <br>
+        <div class="row p-4">
+            <div class="col col-sm-10">
+                <h1>Tiny Organics</h1>
+            </div>
+            <div class="col col-sm-1">
+                <a class="btn btn-secondary" href="/homepage">Home</a>
+            </div>
+            <div class="col col-sm-1">
+                <a class="btn btn-secondary" href="/logout">Logout</a>
+            </div>
+        </div>
+        <hr>
+        <h2>{{user.first_name}}, here are the recipes we found for {{child.first_name}}:</h2>
+        <p><strong>{{child.first_name}} is allergic to:</strong></p>
+        <p>{{allergen}}</p>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
 </body>
+
 </html>

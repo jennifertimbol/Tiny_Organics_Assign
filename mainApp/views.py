@@ -46,8 +46,7 @@ def homepage(request):
     if 'curr_user' not in request.session:
         return redirect('/')
     response = requests.get('https://60f5adf918254c00176dffc8.mockapi.io/api/v1/allergens/')
-    #fetch allergens 
-    #use a regular form instead of djangoforms
+
 
     context = {
         'curr_user' : Customer.objects.get(id=request.session['curr_user']),
@@ -55,28 +54,8 @@ def homepage(request):
     }
     return render(request, 'home.html', context)
 
-    #create a function that will filter out the recipes
-    # create a foorloop 
-    # iterate through the recipes array and allergens 
-    # O(n) complexity
-    # nested forloops = O(n2) complexity
-    # filter allergens from allergies post data 
-    # if/else
-    # assign results in a variable and use it as context to display in html
-
-def fetch_recipes(request):
-    if request.method == 'POST':
-        user = Customer.objects.get(id=request.session['curr_user'])
-
-        child = Child.objects.create(
-            first_name = request.POST['first_name'],
-            last_name = request.POST['last_name'],
-            allergies = request.POST['allergies'] 
-        )
-
-        request.session['users_child'] = child.id
-        return redirect(f'/results/{child.id}')
-
+    #fetch allergens 
+    #use a regular form instead of djangoforms
 
 # def fetchrecipes(request):
 #     if request.method == 'POST':
@@ -88,8 +67,6 @@ def fetch_recipes(request):
 #             form.parent_id = user.id
 #             form.save()
 #             return redirect(f'/results/{form.id}')
-#             # save child's info in the database
-#             #assign allergen post data to a variable
 #         else:
 #             context = {
 #                 'user' : Customer.objects.get(id=request.session['curr_user']),
@@ -98,21 +75,58 @@ def fetch_recipes(request):
 #             return render(request, 'home.html', context)
 #     return redirect('/homepage')
 
+def fetch_recipes(request):
+    if request.method == 'POST':
+        user = Customer.objects.get(id=request.session['curr_user'])
 
+        child = Child.objects.create(
+            first_name = request.POST['first_name'],
+            last_name = request.POST['last_name'],
+            allergies = request.POST['allergies'],
+            parent_id = user.id,
+        )
+        request.session['users_child'] = child.id
+        return redirect(f'/results/{child.id}')
+    return redirect('/homepage')
+    
+# save child's info in the database
+#assign allergen post data to a variable
 
-def generate_recipes(request):
-    response = requests.get('https://60f5adf918254c00176dffc8.mockapi.io/api/v1/recipes/')
-    context = {
-        'recipes' : response.json(),
-    }
-    return render(request, 'results.html', context)
+    # save child's info in the database
+    #assign allergen post data to a variable
+    #create a function that will filter out the recipes
+    # create a foorloop 
+    # iterate through the recipes list
+    # O(n) complexity
+    # nested forloops = O(n2) complexity
+    # filter allergens array of objects from allergies post data 
+    # if/else
+    # assign results in a variable and use it as context to display in html
 
 def results(request, child_id):
     user = Customer.objects.get(id=request.session['curr_user'])
     child = Child.objects.get(id=child_id)
+    allergen = child.allergies
+
+    response = requests.get('https://60f5adf918254c00176dffc8.mockapi.io/api/v1/recipes/')
+    #parse json response
+    recipes = json.loads(response.text)
+    print(recipes)
+    
+    childs_allergen = []
+    childs_allergen.append(allergen)
+
+    #store filtered recipes in a variable
+    filtered_recipes = []
+    for recipe in recipes:
+        for keys, values in recipe.items():
+            if(childs_allergen not in recipe):
+                filtered_recipes.append(recipe)
+
     context = {
         'user' : user,
         'child' : child,
+        'allergen' : allergen,
     }
     return render(request, 'results.html', context)
 
