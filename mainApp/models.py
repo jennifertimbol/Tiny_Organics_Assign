@@ -38,7 +38,7 @@ class Child(models.Model):
     first_name = models.CharField(max_length=55)
     last_name = models.CharField(max_length=55)
     allergies = models.TextField()
-    # allergies switch to ChoiceField
+    # allergies switch to ChoiceField/dropdown?
     #Fetch choices from API call
     parent = models.ForeignKey(Customer, on_delete=models.CASCADE)
     created_at = models.DateField(auto_now_add=True)

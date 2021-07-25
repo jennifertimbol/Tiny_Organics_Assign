@@ -16,6 +16,7 @@
         <div class="row p-4">
             <div class="col col-sm-11">
                 <h2>Hi, {{curr_user.first_name}}!</h2>
+                <h4>Welcome to Tiny Organics~</h4>
             </div>
             <div class="col col-sm-1">
                 <a class="btn btn-secondary" href="/logout">Logout</a>
@@ -34,7 +35,7 @@
             <div class="col col-sm-10">
                 <form action="/fetchrecipes" method="POST">
                     {% csrf_token %}
-                    <h4>Enter your child's information and search for recipes:</h4>
+                    <h5>Enter your child's information and search for recipes:</h5>
                     <div class="form-group row">
                         <label for="first_name" class="col col-form-label col-sm-6">First name:</label>
                         <input type="text" class="form-control" id="first_name" name="first_name">

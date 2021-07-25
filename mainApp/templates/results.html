@@ -24,9 +24,28 @@
             </div>
         </div>
         <hr>
-        <h2>{{user.first_name}}, here are the recipes we found for {{child.first_name}}:</h2>
-        <p><strong>{{child.first_name}} is allergic to:</strong></p>
-        <p>{{allergen}}</p>
+        <div class="row d-flex justify-content-center text-center">
+            <div class="col col-sm-12">
+                <h2>{{user.first_name}}, here are the recipes we found for {{child.first_name}}:</h2>
+            </div>
+        </div>
+        <div class="row d-flex justify-content-center text-center">
+            <div class="col col-sm-6">
+                <p>{{child.first_name}} is allergic to:<strong> {{allergen}} </strong></p>
+            </div>
+        </div>
+
+        <div class="row d-flex justify-content-center text-center">
+            <table class="table table-bordered">
+                {% for recipe in recipes %}
+                <tbody>
+                    <tr>
+                        <td><h4>{{recipe.name}}</h4></td>
+                    </tr>
+                </tbody>
+                {% endfor %}
+            </table>
+        </div>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
