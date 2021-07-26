@@ -45,6 +45,7 @@ def login(request):
 def homepage(request):
     if 'curr_user' not in request.session:
         return redirect('/')
+    #fetch allergens 
     response = requests.get('https://60f5adf918254c00176dffc8.mockapi.io/api/v1/allergens/')
 
 
@@ -54,7 +55,6 @@ def homepage(request):
     }
     return render(request, 'home.html', context)
 
-    #fetch allergens 
     #use a regular form instead of djangoforms
 
 # def fetchrecipes(request):
@@ -89,9 +89,8 @@ def fetch_recipes(request):
         return redirect(f'/results/{child.id}')
     return redirect('/homepage')
     
-# save child's info in the database
-#assign allergen post data to a variable
-
+    # save child's info in the database
+    #assign allergen post data to a variable    
     # save child's info in the database
     #assign allergen post data to a variable
     #create a function that will filter out the recipes
