@@ -19,4 +19,6 @@ Child's data.
 
 * I would add a link or a section in the homepage that houses a list of children.
 
+* Really enjoyed deploying this project as it took me much faster than the first time.
 
+* I would also like to maybe change the drop town into a checkbox or radiobuttons so Customer can choose multiple allergens, if it applies.
