@@ -23,4 +23,6 @@ Allergen API and used them as a dropdown option in the form.
 
 * Really enjoyed deploying this project as it took me much faster than the first time.
 
-* I would also like to maybe change the drop town into a checkbox or radiobuttons so Customer can choose multiple allergens, if it applies.
+* I would also like to maybe change the drop down into a checkbox or radiobuttons so Customer can 
+
+choose multiple allergens, if it applies.
