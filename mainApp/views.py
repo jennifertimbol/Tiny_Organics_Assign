@@ -57,23 +57,6 @@ def homepage(request):
 
     #use a regular form instead of djangoforms
 
-# def fetchrecipes(request):
-#     if request.method == 'POST':
-#         user = Customer.objects.get(id=request.session['curr_user'])
-#         postedChildForm = childForm(request.POST)
-#         if postedChildForm.is_valid():
-#             print('Its valid!')
-#             form = postedChildForm.save(commit=False)
-#             form.parent_id = user.id
-#             form.save()
-#             return redirect(f'/results/{form.id}')
-#         else:
-#             context = {
-#                 'user' : Customer.objects.get(id=request.session['curr_user']),
-#                 'childForm' : postedChildForm,
-#             }
-#             return render(request, 'home.html', context)
-#     return redirect('/homepage')
 
 def fetch_recipes(request):
     if request.method == 'POST':
