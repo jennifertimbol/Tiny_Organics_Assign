@@ -91,16 +91,7 @@ def fetch_recipes(request):
     
     # save child's info in the database
     #assign allergen post data to a variable    
-    # save child's info in the database
-    #assign allergen post data to a variable
-    #create a function that will filter out the recipes
-    # foorloop 
-    # iterate through the recipes list and dict
-    # O(n) complexity
-    # nested forloops = O(n2) complexity
-    # if/else?
-    # assign results in a variable and use it as context to display in html
-
+    
 def results(request, child_id):
     user = Customer.objects.get(id=request.session['curr_user'])
     child = Child.objects.get(id=child_id)
